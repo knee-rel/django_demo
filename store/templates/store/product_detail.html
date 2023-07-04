@@ -2,7 +2,7 @@
 {% load static %} 
 
 {% block title %} 
-This Product Name 
+{{ product.title }}
 {% endblock %} 
 
 {% block css_files %} 
@@ -11,20 +11,23 @@ This Product Name
 
 {% block content %}
 <section id="summary">
-  <h2>Product Name</h2>
+  <h2>{{ product.title }}</h2>
   <article>
-    <img src="{% static "store/images/jeans.png" %}" alt="Product Name" />
-    <p>P1000</p>
-    <div><p>Availability</p></div>
+    <img src="{% static "store/images/"|add:product.image %}" alt={{ product.title }} />
+    <p> Price: P{{ product.price }} </p>
+    <div>
+      <p>Available:
+        {% if product.availability == True %} Yes {% endif %}
+        {% if product.availability == False %} No {% endif %}
+      </p>
+    </div>
     <div><button>Add to Cart</button></div>
   </article>
 </section>
 
 <main>
   <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis nobis
-    aperiam est praesentium, quos iste consequuntur omnis exercitationem quam
-    velit labore vero culpa ad mollitia? Quis architecto ipsam nemo. Odio.
+    {{ product.description }}
   </p>
 </main>
 {% endblock %}

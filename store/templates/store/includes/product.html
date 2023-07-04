@@ -2,13 +2,13 @@
 
 <li>
   <article class="product">
-    <a href="{% url "product-detail-page" "the-jeans" %}">
-      <img src="{% static "store/images/jeans.png" %}" alt="Product Something"
+    <a href="{% url "product-detail-page" product.slug %}">
+      <img src="{% static "store/images/"|add:product.image %}" alt={{ product.title }}
       />
       <div class="product__content">
-        <h3>Product Something</h3>
+        <h3>{{ product.title }}</h3>
         <p>
-            In ultrices porttitor pellentesque. Cras sem urna, finibus eu dictum ullamcorper, vestibulum vitae ipsum
+           {{ product.description }}
         </p>
       </div>
     </a>

@@ -30,7 +30,9 @@ My Store
   <h2>My Latest Products</h2>
 
   <ul>
-    {% include "store/includes/product.html" %}
+    {% for product in products %}
+      {% include "store/includes/product.html" %}
+    {% endfor %}
   </ul>
 </section>
 

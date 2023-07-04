@@ -15,12 +15,9 @@ All My Products
   <h2>My Collected products</h2>
 
   <ul>
-    {% include "store/includes/product.html" %}
-    {% include "store/includes/product.html" %}
-    {% include "store/includes/product.html" %}
-    {% include "store/includes/product.html" %}
-    {% include "store/includes/product.html" %}
-    {% include "store/includes/product.html" %}
+    {% for product in all_products %}
+      {% include "store/includes/product.html" %}
+    {% endfor %}
   </ul>
 </section>
 {% endblock %}
