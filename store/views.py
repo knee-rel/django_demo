@@ -6,7 +6,7 @@ def starting_page(request):
   return render(request, "store/index.html")
 
 def products(request):
-  pass
+  return render(request, "store/all_products.html")
 
 def product_detail(request):
   pass

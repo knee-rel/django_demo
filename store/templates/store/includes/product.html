@@ -1,0 +1,16 @@
+{% load static %}
+
+<li>
+  <article class="product">
+    <a href="{% url "product-detail-page" "the-jeans" %}">
+      <img src="{% static "store/images/jeans.png" %}" alt="Product Something"
+      />
+      <div class="product__content">
+        <h3>Product Something</h3>
+        <p>
+            In ultrices porttitor pellentesque. Cras sem urna, finibus eu dictum ullamcorper, vestibulum vitae ipsum
+        </p>
+      </div>
+    </a>
+  </article>
+</li>

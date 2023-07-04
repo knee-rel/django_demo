@@ -6,16 +6,17 @@ My Store
 {% endblock %} 
 
 {% block css_files %}
+  <link rel="stylesheet" href="{% static "store/product.css" %}" />
   <link rel="stylesheet" href="{% static "store/index.css" %}" />
 {% endblock %}
 
 {% block content %}
-<header id="main-navigation">
+{% comment %} <header id="main-navigation">
   <h1><a href="">My Store</a></h1>
   <nav>
     <a href="">All Products</a>
   </nav>
-</header>
+</header> {% endcomment %}
 
 <section id="welcome">
   <header>
@@ -29,19 +30,7 @@ My Store
   <h2>My Latest Products</h2>
 
   <ul>
-    <li>
-      <article class="post">
-        <a href="">
-          <img src="{% static "store/images/shirt.png" %}" alt="Product Name Something" />
-          <div class="post__content">
-            <h3>Product Name Something</h3>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultrices diam nec eros euismod pharetra. Cras interdum suscipit nibh, sed hendrerit ex suscipit ut. 
-            </p>
-          </div>
-        </a>
-      </article>
-    </li>
+    {% include "store/includes/product.html" %}
   </ul>
 </section>
 
