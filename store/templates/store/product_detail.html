@@ -1,0 +1,30 @@
+{% extends "base.html" %} 
+{% load static %} 
+
+{% block title %} 
+This Product Name 
+{% endblock %} 
+
+{% block css_files %} 
+<link rel="stylesheet" href="{% static "store/product_detail.css" %}" /> 
+{% endblock %} 
+
+{% block content %}
+<section id="summary">
+  <h2>Product Name</h2>
+  <article>
+    <img src="{% static "store/images/jeans.png" %}" alt="Product Name" />
+    <p>P1000</p>
+    <div><p>Availability</p></div>
+    <div><button>Add to Cart</button></div>
+  </article>
+</section>
+
+<main>
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis nobis
+    aperiam est praesentium, quos iste consequuntur omnis exercitationem quam
+    velit labore vero culpa ad mollitia? Quis architecto ipsam nemo. Odio.
+  </p>
+</main>
+{% endblock %}

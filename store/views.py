@@ -8,5 +8,5 @@ def starting_page(request):
 def products(request):
   return render(request, "store/all_products.html")
 
-def product_detail(request):
-  pass
+def product_detail(request, slug):
+  return render(request, "store/product_detail.html")
