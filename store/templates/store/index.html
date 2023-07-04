@@ -1,9 +1,59 @@
-{% extends "base.html" %}
+{% extends "base.html" %} 
+{% load static %}
 
-{% block title %}
-  My Store
+{% block title %} 
+My Store
+{% endblock %} 
+
+{% block css_files %}
+  <link rel="stylesheet" href="{% static "store/index.css" %}" />
 {% endblock %}
 
 {% block content %}
-  <h1>Welcome to my store</h1>
+<header id="main-navigation">
+  <h1><a href="">My Store</a></h1>
+  <nav>
+    <a href="">All Products</a>
+  </nav>
+</header>
+
+<section id="welcome">
+  <header>
+    <img src="" alt="" />
+    <h2>My Store</h2>
+  </header>
+  <p>Integer sodales convallis interdum. Pellentesque mollis justo sed vestibulum venenatis.</p>
+</section>
+
+<section id="latest-posts">
+  <h2>My Latest Products</h2>
+
+  <ul>
+    <li>
+      <article class="post">
+        <a href="">
+          <img src="" alt="Product Name Something" />
+          <div class="post__content">
+            <h3>Product Name Something</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultrices diam nec eros euismod pharetra. Cras interdum suscipit nibh, sed hendrerit ex suscipit ut. 
+            </p>
+          </div>
+        </a>
+      </article>
+    </li>
+  </ul>
+</section>
+
+<section id="about">
+  <h2>What I Do</h2>
+  <p>
+    I love programming, I love to help others and I enjoy exploring new
+    technologies in general!
+  </p>
+  <p>
+    My goal is to keep on growing as a developer - and if I could help you do
+    the same, I'd be very happy!
+  </p>
+</section>
 {% endblock %}
