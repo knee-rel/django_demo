@@ -13,6 +13,7 @@ all_products = [
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis nobis aperiam est praesentium, quos iste consequuntur omnis exercitationem quam velit labore vero culpa ad mollitia? Quis architecto ipsam nemo. Odio.",
     "availability": True,
     "date": date(2023, 6, 21),
+    "categories": "Clothing"
   },
   {
     "slug": "eyewear",
@@ -22,6 +23,7 @@ all_products = [
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis nobis aperiam est praesentium, quos iste consequuntur omnis exercitationem quam velit labore vero culpa ad mollitia? Quis architecto ipsam nemo. Odio.",
     "availability": True,
     "date": date(2023, 6, 10),
+    "categories": "Eyewear"
   },
   {
     "slug": "shirt",
@@ -31,6 +33,7 @@ all_products = [
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis nobis aperiam est praesentium, quos iste consequuntur omnis exercitationem quam velit labore vero culpa ad mollitia? Quis architecto ipsam nemo. Odio.",
     "availability": True,
     "date": date(2023, 6, 22),
+    "categories": "Clothing",
   },
   {
     "slug": "shop_img",
@@ -40,6 +43,7 @@ all_products = [
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis nobis aperiam est praesentium, quos iste consequuntur omnis exercitationem quam velit labore vero culpa ad mollitia? Quis architecto ipsam nemo. Odio.",
     "availability": False,
     "date": date(2023, 6, 2),
+    "categories": "Shop",
   },
 ]
 
