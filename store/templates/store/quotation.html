@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Quotation Form
+{% endblock %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static 'store/quotation.css' %}" />
+{% endblock %}
+
+{% block content %}
+<section id="quotation">
+    <h2>Your Quotation Form</h2>
+    <ul>
+        {% for slug, item in quotation_items.items %}
+        <li>
+            <img src="{{ item.image }}" alt="{{ item.title }}" />
+            <p>{{ item.title }}</p>
+            <div class="quantity-control">
+                <button onclick="changeQuantity('{{ slug }}', -1)">-</button>
+                <input type="number" id="quantity-{{ slug }}" value="{{ item.quantity }}" readonly />
+                <button onclick="changeQuantity('{{ slug }}', 1)">+</button>
+            </div>
+        </li>
+        {% empty %}
+        <li>No items in your quotation form.</li>
+        {% endfor %}
+    </ul>
+    {% comment %} <h3>Total Price: P{{ total_price }}</h3> {% endcomment %}
+</section>
+
+<script>
+function changeQuantity(slug, change) {
+    const input = document.getElementById(`quantity-${slug}`);
+    let quantity = parseInt(input.value) + change;
+    if (quantity < 0) quantity = 0; // Prevent negative quantities
+    input.value = quantity;
+
+    // Send the updated quantity to the server (via AJAX or form submission)
+    fetch(`/update-quantity/${slug}/`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': '{{ csrf_token }}'
+        },
+        body: JSON.stringify({ quantity: quantity })
+    });
+}
+</script>
+{% endblock %}

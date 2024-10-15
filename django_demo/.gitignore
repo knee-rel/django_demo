@@ -1,0 +1,42 @@
+# Django-specific files
+*.log                 # Log files
+*.pot                 # Translation template files
+*.pyc                 # Compiled Python files
+__pycache__/          # Python cache directories
+local_settings.py     # Local settings file (if used)
+db.sqlite3            # SQLite database file
+
+# Virtual Environment
+.env                  # Environment variables file
+venv/                 # Virtual environment directory
+env/                  # Alternative virtual environment directory
+
+# IDE-specific files
+.idea/                # PyCharm project settings
+
+# MacOS specific files
+.DS_Store             # macOS metadata files
+
+# Windows specific files
+Thumbs.db            # Windows thumbnail cache
+
+# Coverage reports
+.coverage             # Coverage report file
+.tox/                 # Tox testing environments
+.eggs/                # Egg packages directory
+
+# Other temporary files
+*.egg-info/          # Egg info directories
+*.manifest            # PyInstaller manifest files
+*.spec                # PyInstaller spec files
+
+# Unit test / coverage reports
+htmlcov/             # Coverage HTML report directory
+nosetests.xml        # Nose test results file
+coverage.xml         # Coverage XML report file
+
+# Sphinx documentation build directory
+docs/_build/         # Sphinx documentation build directory
+
+# PyBuilder target directory
+target/              # PyBuilder target directory

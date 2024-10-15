@@ -1,33 +1,34 @@
-{% extends "base.html" %} 
-{% load static %} 
+{% extends "base.html" %}
+{% load static %}
 
-{% block title %} 
-{{ product.title }}
-{% endblock %} 
+{% block title %}
+    {{ product.title }}
+{% endblock %}
 
-{% block css_files %} 
-<link rel="stylesheet" href="{% static "store/product_detail.css" %}" /> 
-{% endblock %} 
+{% block css_files %}
+    <link rel="stylesheet" href="{% static 'store/product_detail.css' %}" />
+{% endblock %}
 
 {% block content %}
 <section id="summary">
-  <h2>{{ product.title }}</h2>
-  <article>
-    <img src="{% static "store/images/"|add:product.image %}" alt={{ product.title }} />
-    <p> Price: P{{ product.price }} </p>
-    <div>
-      <p>Available:
-        {% if product.availability == True %} Yes {% endif %}
-        {% if product.availability == False %} No {% endif %}
-      </p>
-    </div>
-    <div><button>Add to Cart</button></div>
-  </article>
+    <a href="{% url 'products-page' %}" class="btn btn-secondary">Back to Products</a>
+    <h2>{{ product.title }}</h2>
+    <article>
+        {% comment %}
+        <img src="{% static "store/images/"|add:product.image_name %}" alt="{{ product.title }}" />
+        {% endcomment %}
+        <p>Price: P{{ product.price }}</p>
+        {% if product.availability %}
+            <a href="{% url 'add-to-quotation' product.slug %}" class="btn btn-primary">
+                Add to Quotation Form
+            </a>
+        {% else %}
+            <p>Out of Stock</p>
+        {% endif %}
+    </article>
 </section>
 
 <main>
-  <p>
-    {{ product.description }}
-  </p>
+    <p>{{ product.description }}</p>
 </main>
 {% endblock %}

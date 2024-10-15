@@ -3,7 +3,7 @@
 <li>
   <article class="product">
     <a href="{% url "product-detail-page" product.slug %}">
-      <img src="{% static "store/images/"|add:product.image %}" alt={{ product.title }}
+      {% comment %} <img src="{% static "store/images/"|add:product.image %}" alt={{ product.title }} {% endcomment %}
       />
       <div class="product__content">
         <h3>{{ product.title }}</h3>
