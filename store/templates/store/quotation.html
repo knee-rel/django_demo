@@ -28,6 +28,7 @@ Quotation Form
         {% endfor %}
     </ul>
     {% comment %} <h3>Total Price: P{{ total_price }}</h3> {% endcomment %}
+    <a href="{% url 'checkout-page' %}" class="checkout-button">Proceed to Checkout</a>
 </section>
 
 <script>

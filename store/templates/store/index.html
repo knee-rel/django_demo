@@ -8,6 +8,7 @@ My Store
 {% block css_files %}
   <link rel="stylesheet" href="{% static "store/product.css" %}" />
   <link rel="stylesheet" href="{% static "store/index.css" %}" />
+  <link rel="stylesheet" href="{% static "store/modal.css" %}" />
 {% endblock %}
 
 {% block content %}
@@ -36,6 +37,8 @@ My Store
   </ul>
 </section>
 
+
+
 <section id="about">
   <h2>What I Do</h2>
   <p>
@@ -45,4 +48,43 @@ My Store
     Integer sodales convallis interdum. Pellentesque mollis justo sed vestibulum venenatis.
   </p>
 </section>
+
+{% if messages %}
+<div id="success-modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Success!</h2>
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var modal = document.getElementById("success-modal");
+    if (modal) {
+        modal.style.display = "block"; // Show the modal
+    }
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+});
+</script>
 {% endblock %}

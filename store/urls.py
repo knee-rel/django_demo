@@ -11,4 +11,5 @@ urlpatterns = [
          views.add_to_quotation, name='add-to-quotation'),
     path('quotation/', views.quotation_page, name='quotation-page'),
     path('update-quantity/<slug>/', views.update_quantity, name='update-quantity'),
+    path('checkout/', views.checkout_page, name='checkout-page'),
 ]

@@ -1,8 +1,9 @@
 from datetime import date
-from .models import Product, QuotationForm, Customer
+from .models import Product, QuotationForm, Customer, Checkout
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
+from django.contrib import messages
 import json
 
 # Create your views here.
@@ -58,7 +59,8 @@ def get_date(product):
 def starting_page(request):
     latest_products = Product.objects.order_by('-date')[:3]
     return render(request, "store/index.html", {
-        "products": latest_products
+        "products": latest_products,
+        "messages": messages.get_messages(request)  
     })
 
 
@@ -141,3 +143,34 @@ def quotation_page(request):
         "quotation_items": quotation_form,
         "total_price": total_price
     })
+
+def checkout_page(request):
+    if request.method == "POST":
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        email = request.POST.get('email')
+        mobile = request.POST.get('mobile')
+
+        # Here, you can save the customer information to the database
+        customer = Customer(first_name=first_name, last_name=last_name, email_address=email)
+        customer.save()
+        
+        # Create a Checkout record
+        checkout = Checkout(customer=customer)
+        checkout.save()
+
+        # Optionally, you could create a QuotationForm entry here as well
+        quotation_form = request.session.get('quotation_form', {})
+        for slug, item in quotation_form.items():
+            product = get_object_or_404(Product, slug=slug)
+            quotation_entry = QuotationForm(customer=customer, product=product, quantity=item['quantity'])
+            quotation_entry.save()
+
+        # Clear the quotation form from the session
+        del request.session['quotation_form']
+        
+        messages.success(request, "Checkout completed successfully!")
+
+        return redirect('starting-page')  # Redirect after successful checkout
+
+    return render(request, "store/checkout.html")

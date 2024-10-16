@@ -1,5 +1,5 @@
 from django.db import models
-from django.core.validators import MinLengthValidator, MinValueValidator
+from django.core.validators import MinLengthValidator, MinValueValidator, RegexValidator
 
 # Create your models here.
 
@@ -15,12 +15,15 @@ class Customer(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     email_address = models.EmailField()
+    # Mobile field with validation for numeric values
+    mobile_validator = RegexValidator(regex=r'^\+?1?\d{9,15}$', message="Enter a valid mobile number.")
+    mobile = models.CharField(validators=[mobile_validator], max_length=17, blank=True)  # max_length can be adjusted
 
     def full_name(self):
         return f"{self.first_name} {self.last_name}"
 
     def __str__(self):
-        return self.full_name
+        return self.full_name()
 
 
 class Product(models.Model):
@@ -51,3 +54,12 @@ class QuotationForm(models.Model):
 
     def __str__(self):
         return f"{self.product.title} (x{self.quantity})"
+
+class Checkout(models.Model):
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    quotation = models.ForeignKey(QuotationForm, on_delete=models.CASCADE, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    # Additional fields can be added if needed (e.g., order number, status)
+
+    def __str__(self):
+        return f"Checkout for {self.customer.full_name()} on {self.created_at}"
