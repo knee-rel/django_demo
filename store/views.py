@@ -4,6 +4,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from django.contrib import messages
+from .filters import ProductFilter
 import json
 
 # Create your views here.
@@ -66,8 +67,12 @@ def starting_page(request):
 
 def products(request):
     all_products = Product.objects.all()
+    product_filter = ProductFilter(request.GET, queryset=all_products)
+    
     return render(request, "store/all_products.html", {
-        "all_products": all_products
+        # "all_products": all_products
+        "all_products": product_filter.qs,
+        "filter": product_filter
     })
 
 

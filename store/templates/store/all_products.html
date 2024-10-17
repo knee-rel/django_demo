@@ -14,9 +14,26 @@ All My Products
 <section id="all-products">
   <h2>My Collected products</h2>
 
+  <div class="search-container">
+    <form method="get" class="search-form">
+      {% for field in filter.form %}
+        <div class="filter-field">
+          {{ field.label_tag }}
+          {{ field }}
+        </div>
+      {% endfor %}
+      <div class="filter-field" style="display: flex; align-items: flex-end;">
+        <button type="submit" class="search-button">Search</button>
+        <a href="{% url 'products-page' %}" class="clear-filters">Clear Filters</a>
+      </div>
+    </form>
+  </div>
+
   <ul>
     {% for product in all_products %}
       {% include "store/includes/product.html" %}
+    {% empty %}
+      <li class="no-products">No products found matching your criteria.</li>
     {% endfor %}
   </ul>
 </section>
